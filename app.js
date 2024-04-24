@@ -28,6 +28,7 @@ connection.connect(() => {
 });
 
 const port = process.env.PORT || 3000;
+const host = process.env.HOST || 'localhost';
 
 // Get api of all todo
 app.get('/list-todos', async (req, res) => {
@@ -164,4 +165,6 @@ app.get('/', (req, res) => {
   res.sendFile(viewsDirectoryPath + '/index.html');
 });
 
-app.listen(port);
+app.listen(port, host, (err) => {
+	console.log('todo_app is running on %s:%s', host, port);
+});
